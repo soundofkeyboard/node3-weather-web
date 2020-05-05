@@ -1,6 +1,6 @@
 const request = require('request')
 const forecast = (latitude,longitude,callback) =>{
-    const url = 'https://api.darksky.net/forecast/98c15c9f9e51203debd808d96d3709a3/' + latitude +','+ longitude + '?units=si'
+    const url = 'https://api.darksky.net/forecast/98c15c9f9e51203debd808d96d3709a3/' + latitude +','+ longitude + '?units=uk2'
     request({url, json:true}, (error, {body}) => {
         if (error) { 
             callback('Unable to connect to weather services', undefined)
@@ -9,7 +9,7 @@ const forecast = (latitude,longitude,callback) =>{
             callback('Unable to find location. Try another search')
         } else{
             callback(undefined,body.daily.data[0].summary + ' It is currently ' + body.currently.temperature +
-            ' degrees out. There is ' + body.currently.precipProbability + '% chance of rain and the wind speed is' + body.currently.windSpeed + 'mph'
+            ' degrees out. There is ' + body.currently.precipProbability + '% chance of rain and the wind speed is ' + body.currently.windSpeed + 'mph'
             )
              }
        
